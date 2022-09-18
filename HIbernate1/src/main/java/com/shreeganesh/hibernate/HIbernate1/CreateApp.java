@@ -6,12 +6,12 @@ import org.hibernate.cfg.Configuration;
 
 import com.shreeganesh.hibernate.HIbernate1.dto.Song;
 
-public class App2 
+public class CreateApp 
 {
     public static void main( String[] args )
     {
     	Configuration c = new Configuration();
-    	c.configure("hibernate.cfg.xml");
+    	c.configure();
     	c.addAnnotatedClass(Song.class);
     	SessionFactory sf= c.buildSessionFactory();
 
