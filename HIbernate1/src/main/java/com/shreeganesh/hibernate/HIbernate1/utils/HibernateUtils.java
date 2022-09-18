@@ -1,5 +1,7 @@
 package com.shreeganesh.hibernate.HIbernate1.utils;
 
+import java.sql.SQLException;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -12,12 +14,18 @@ public class HibernateUtils {
 	public static SessionFactory getSessionFactory() {
 
 		
-		
-		if(sessionf==null) {
-		Configuration c = new Configuration();
-		c.configure();
-		c.addAnnotatedClass(Song.class);
-		sessionf = c.buildSessionFactory();
+		try {
+			if(sessionf==null) {
+			Configuration c = new Configuration();
+			c.configure();
+			c.addAnnotatedClass(Song.class);
+			sessionf = c.buildSessionFactory();
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Session Factory Object not create because of some issue");
+			e.printStackTrace();
+			System.out.println("Session Factory Object not create because of some issue");
 		}
 		return sessionf;
 	}
