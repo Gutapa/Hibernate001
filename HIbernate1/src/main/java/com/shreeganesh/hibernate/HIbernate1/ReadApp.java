@@ -16,10 +16,12 @@ public class ReadApp
     	s.beginTransaction();
     	Song s1 = s.get(Song.class,1);
     	s.getTransaction().commit();
-    	
-    	s.beginTransaction();
-    	Song s2 = s.load(Song.class,2);
-    	s.getTransaction().commit();
+    	SessionFactory sessionFactory1 = HibernateUtils.getSessionFactory();
+
+    	Session session=sessionFactory1.openSession();
+    	session.beginTransaction();
+    	Song s2 = session.load(Song.class,2);
+    	session.getTransaction().commit();
     	
     	System.out.println(s1);
     	System.out.println(s2);
