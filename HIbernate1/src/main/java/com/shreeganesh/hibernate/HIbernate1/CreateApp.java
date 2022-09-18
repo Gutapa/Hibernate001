@@ -2,20 +2,17 @@ package com.shreeganesh.hibernate.HIbernate1;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import com.shreeganesh.hibernate.HIbernate1.dto.Song;
+import com.shreeganesh.hibernate.HIbernate1.utils.HibernateUtils;
 
 public class CreateApp 
 {
     public static void main( String[] args )
     {
-    	Configuration c = new Configuration();
-    	c.configure();
-    	c.addAnnotatedClass(Song.class);
-    	SessionFactory sf= c.buildSessionFactory();
+    	SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
-    	Session s=sf.openSession();
+    	Session s=sessionFactory.openSession();
     	
     	Song s1 = new Song();
     	s1.setId(2);
